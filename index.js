@@ -12,6 +12,8 @@ function RelayAccessory(log, config) {
   this.name = config["name"];
   this.pin = config["pin"];
   this.invert = defaultVal(config["invert"], false);
+  this.read_pin = config["read_pin"];
+  this.read_invert = defaultVal(config["read_invert"], false);
   this.default = defaultVal(config["default_state"], false);
   this.duration = defaultVal(config["duration_ms"], 0);
   this.timerid = -1;
@@ -56,7 +58,7 @@ RelayAccessory.prototype.readState = function() {
     pin = this.read_pin;
   }
   var val = this.gpioVal(rpio.read(pin) > 0) == rpio.HIGH;
-  if (this.hasOwnProperty('read_inverted') && this.read_inverted) {
+  if (this.hasOwnProperty('read_invert') && this.read_invert) {
     val = !val;
   }
   return val;

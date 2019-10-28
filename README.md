@@ -35,6 +35,8 @@ The raspberry pi can then control the state of the relays
           "name": "Relay-1",
           "pin": 11
           "invert": true,
+	  "read_pin": 12,
+	  "read_invert": true,
           "default_state": false,
           "duration": 1000
         },
@@ -67,9 +69,11 @@ Name             | Meaning
 ---------------- | ------------------------------------------------
 `accessory`      | Accessory type. `Relay` (REQUIRED)
 `name`           | Default name for the accessory. (REQUIRED)
-`pin`            | Which pin number to use for this accessory. (REQUIRED)
-`invert`         | If true, output on pin is `LOW` for `ON`, and `HIGH` for `OFF`. (Default: false)
-`default_state` | State to set on start of homebridge.  `true` for `ON`, `false` for `OFF`. (Default: `false`/`OFF`)
-`duration_ms`   | If given, accessory will stay ON for this many milliseconds, then turn OFF.  Timer resets if accessory is turned ON again while it is still ON. (Default: 0/None)
+`pin`            | Which output pin number to use for this accessory. (REQUIRED)
+`invert`         | If true, output on `pin` is inverted; `LOW` for `ON`, and `HIGH` for `OFF`. (Default: false)
+`read_pin`       | If given, specifies an alternate pin to read the current state from.  (Default: same as `pin`)
+`read_invert`    | If true, input from `read_pin` is inverted; `LOW` for `ON` and `HIGH` for `OFF`.  (Default: false)
+`default_state`  | State to set on start of homebridge.  `true` for `ON`, `false` for `OFF`.  (Default: `false`/`OFF`)
+`duration_ms`    | If given, accessory will stay ON for this many milliseconds, then turn OFF.  Timer resets if accessory is turned ON again while it is still ON. (Default: 0/None)
 
 

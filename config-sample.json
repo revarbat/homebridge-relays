@@ -14,6 +14,8 @@
       "name": "Relay-1",
       "pin": 11,
       "invert": true,
+      read_"pin": 12,
+      read_invert: true,
       "default_state": false,
       "duration_ms": 1000
     },
