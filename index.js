@@ -51,8 +51,15 @@ RelayAccessory.prototype.timeOutCB = function(o) {
 }
 
 RelayAccessory.prototype.readState = function() {
-  var val = this.gpioVal(rpio.read(this.pin) > 0);
-  return val == rpio.HIGH;
+  var pin = this.pin;
+  if (this.hasOwnProperty('read_pin')) {
+    pin = this.read_pin;
+  }
+  var val = this.gpioVal(rpio.read(pin) > 0) == rpio.HIGH;
+  if (this.hasOwnProperty('read_inverted') && this.read_inverted) {
+    val = !val;
+  }
+  return val;
 }
 
 RelayAccessory.prototype.setState = function(val) {
